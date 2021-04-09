@@ -1,0 +1,29 @@
+﻿@model IEnumerable<movieRental.Models.Customer>
+
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Customers</th>
+    </tr>
+    @if (Model.Any())
+    {
+        foreach (var customer in Model)
+        {
+            <tr>
+                <td class="td">@Html.ActionLink(customer.Name, "Details", "Customer", new { id = customer.Id }, null)</td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr>
+            <td>We don't have any customers yet!</td>
+        </tr>
+    }
+</table>
+
